@@ -1,15 +1,20 @@
 #include <iostream>
-using namespace std;
-int main()
+
+int main() 
 {
-	unsigned int n;
-	setlocale(LC_ALL, "Rus");
-	cout << "Введите положительное число: " << endl;
-	cin >> n;
-	unsigned int* a = &n;
-	for (int i = 0; i < sizeof(int); i++)
+	// дано целое число типа unsigned int
+	unsigned int value = UINT_MAX;
+
+	// приводим адрес к значению unsigned char*
+	unsigned char* ucPtr = (unsigned char*)&value;
+	// выводим содержимое каждого из байтов
+	// unsigned int занимает 4 байта, поэтому цикл выполняется 4 раза
+	for (int i = 0; i < sizeof(unsigned int); i++) 
 	{
-		unsigned int* b = (unsigned int*)a + i;
-		cout << (int)*b << "  ";
+		// перемещаем указатель вперед на индекс итерации
+		ucPtr += i;
+
+		// выводим
+		std::cout << +(*ucPtr) << std::endl;
 	}
 }
