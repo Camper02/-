@@ -1,0 +1,52 @@
+#include <iostream>
+
+
+class perim
+{
+public:
+	int per = 0, a[3];
+
+	void find_per()
+	{
+		if (check_nums())
+		{
+			per = a[0] + a[2] + a[1];
+		}
+
+		
+	}
+	int out()
+	{
+		if (per > 0)
+		{
+			return per;
+		}
+		else
+		{
+			return -1;
+		}
+
+	}
+private:
+	bool check_nums()
+	{
+		if (((a[0] + a[1]) > a[2]) && ((a[0] + a[2]) > a[1]) && (a[2] + a[1] > a[0]))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+};
+
+
+
+int main()
+{
+	perim count;
+	int a, b, c;
+	std::cin >> count.a[0] >> count.a[1] >> count.a[2];
+	count.find_per();
+	std::cout << count.out();
+	return 0;
+}
